@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vigilo.web", "vigilo.web\vigilo.web.csproj", "{82F46559-8D1F-4865-9E0A-3479C8093F15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vigilo.domain.services", "vigilo.domain.services\vigilo.domain.services.csproj", "{08243004-F773-47AF-8ABC-CDDAE860F340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{82F46559-8D1F-4865-9E0A-3479C8093F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82F46559-8D1F-4865-9E0A-3479C8093F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82F46559-8D1F-4865-9E0A-3479C8093F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08243004-F773-47AF-8ABC-CDDAE860F340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08243004-F773-47AF-8ABC-CDDAE860F340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08243004-F773-47AF-8ABC-CDDAE860F340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08243004-F773-47AF-8ABC-CDDAE860F340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
