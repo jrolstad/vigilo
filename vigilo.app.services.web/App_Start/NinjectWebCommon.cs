@@ -1,7 +1,5 @@
-using vigilo.app.services.web.Mappers;
-using vigilo.app.services.web.Models.api;
-using vigilo.domain.services.Commands;
-using vigilo.domain.services.Interfaces;
+using System.Web.Http;
+using vigilo.app.services.web.DependencyInjection;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(vigilo.app.services.web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(vigilo.app.services.web.App_Start.NinjectWebCommon), "Stop")]
@@ -49,6 +47,9 @@ namespace vigilo.app.services.web.App_Start
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
             
             RegisterServices(kernel);
+
+            // Install our Ninject-based IDependencyResolver into the Web API config
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectWebApiDependencyResolver(kernel);
             return kernel;
         }
 
@@ -58,11 +59,7 @@ namespace vigilo.app.services.web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IMapper<RabbitMqQueueMetadata, MessageQueueStatus>>().To<MessageQueueStatusMapper>();
-
-            kernel.Bind<ICommand<GetRabbitMqServerUrlRequest,GetRabbitMqServerUrlResponse>>().To<GetRabbitMqServerUrlCommand>();
-            kernel.Bind<ICommand<GetMonitorableQueuesRequest,GetMonitorableQueuesReponse>>().To<GetMonitorableQueuesCommand>();
-            kernel.Bind<ICommand<GetRabbitMqQueueMetadataRequest,GetRabbitMqQueueMetadataResponse>>().To<GetRabbitMqQueueMetadataCommand>();
+            Configurator.Configure(kernel);
         }        
     }
 }
