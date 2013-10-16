@@ -11,22 +11,25 @@ namespace vigilo.app.services.web.Controllers
 {
     public class MessageQueueStatusController : ApiController
     {
+        private readonly ICommand<ValidateRabbitMqQueueMetadataRequest, ValidateRabbitMqQueueMetadataRequestResponse> _validatedRabbitMqMetadataCommand;
         private readonly ICommand<GetRabbitMqServerUrlRequest, GetRabbitMqServerUrlResponse> _rabbitServerUrlCommand;
         private readonly ICommand<GetMonitorableQueuesRequest, GetMonitorableQueuesReponse> _getQueuesToMonitorCommand;
         private readonly ICommand<GetRabbitMqQueueMetadataRequest, GetRabbitMqQueueMetadataResponse> _getQueueMetaDataCommand;
-        private readonly IMapper<RabbitMqQueueMetadata, MessageQueueStatus> _messageQueueStatusMapper;
+        private readonly IMapper<ValidatedRabbitMqQueueMetadata, MessageQueueStatus> _messageQueueStatusMapper;
+
 
         public MessageQueueStatusController(
             ICommand<GetRabbitMqServerUrlRequest,GetRabbitMqServerUrlResponse> rabbitServerUrlCommand,
             ICommand<GetMonitorableQueuesRequest,GetMonitorableQueuesReponse> getQueuesToMonitorCommand,
             ICommand<GetRabbitMqQueueMetadataRequest,GetRabbitMqQueueMetadataResponse> getQueueMetaDataCommand,
-            IMapper<RabbitMqQueueMetadata,MessageQueueStatus> messageQueueStatusMapper,
-            
+            ICommand<ValidateRabbitMqQueueMetadataRequest, ValidateRabbitMqQueueMetadataRequestResponse> validatedRabbitMqMetadataCommand,
+            IMapper<ValidatedRabbitMqQueueMetadata, MessageQueueStatus> messageQueueStatusMapper
            )
         {
             _rabbitServerUrlCommand = rabbitServerUrlCommand;
             _getQueuesToMonitorCommand = getQueuesToMonitorCommand;
             _getQueueMetaDataCommand = getQueueMetaDataCommand;
+            _validatedRabbitMqMetadataCommand = validatedRabbitMqMetadataCommand;
             _messageQueueStatusMapper = messageQueueStatusMapper;
         }
 
@@ -42,8 +45,10 @@ namespace vigilo.app.services.web.Controllers
                 QueueNames = queuesToMonitor.QueueNames
             };
             var metadata = _getQueueMetaDataCommand.Execute(metaDataRequest);
-            
-            var models = metadata.Queues
+
+            var validatedMetadata = _validatedRabbitMqMetadataCommand.Execute(new ValidateRabbitMqQueueMetadataRequest{Queues = metadata.Queues});
+
+            var models = validatedMetadata.Queues
                 .Select(_messageQueueStatusMapper.Map)
                 .ToList();
 
