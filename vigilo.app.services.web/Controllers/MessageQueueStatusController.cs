@@ -20,7 +20,8 @@ namespace vigilo.app.services.web.Controllers
             ICommand<GetRabbitMqServerUrlRequest,GetRabbitMqServerUrlResponse> rabbitServerUrlCommand,
             ICommand<GetMonitorableQueuesRequest,GetMonitorableQueuesReponse> getQueuesToMonitorCommand,
             ICommand<GetRabbitMqQueueMetadataRequest,GetRabbitMqQueueMetadataResponse> getQueueMetaDataCommand,
-            IMapper<RabbitMqQueueMetadata,MessageQueueStatus> messageQueueStatusMapper
+            IMapper<RabbitMqQueueMetadata,MessageQueueStatus> messageQueueStatusMapper,
+            
            )
         {
             _rabbitServerUrlCommand = rabbitServerUrlCommand;
