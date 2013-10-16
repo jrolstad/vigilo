@@ -42,8 +42,8 @@ namespace vigilo.domain.services.Commands
                 return new RabbitMqQueueMetadata
                 {
                     Name = response.QueueName,
-                    ConsumerCount = System.Convert.ToInt32(response.ConsumerCount),
-                    MessageCount = System.Convert.ToInt32(response.MessageCount),
+                    ConsumerCount = Convert.ToInt32(response.ConsumerCount),
+                    MessageCount = Convert.ToInt32(response.MessageCount),
                     QueueExists = true
                 };
             }
