@@ -52,6 +52,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Simple.Validation">
+      <HintPath>..\packages\Simple.Validation.0.1.11\lib\net40\Simple.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Validation.Ninject">
+      <HintPath>..\packages\Simple.Validation.Ninject.0.7.1\lib\net40\Simple.Validation.Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -186,6 +192,7 @@
     </Compile>
     <Compile Include="Mappers\MessageQueueStatusMapper.cs" />
     <Compile Include="Models\api\MessageQueueStatus.cs" />
+    <Compile Include="Models\api\ValidationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

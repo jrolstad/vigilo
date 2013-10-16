@@ -1,4 +1,7 @@
-﻿namespace vigilo.app.services.web.Models.api
+﻿using System.Collections.Generic;
+using System.Web.Helpers;
+
+namespace vigilo.app.services.web.Models.api
 {
     public class MessageQueueStatus
     {
@@ -9,5 +12,7 @@
         public int ConsumerCount { get; set; }
 
         public bool QueueExists { get; set; } 
+
+        public List<ValidationResult> ValidationResults { get; set; }
     }
 }

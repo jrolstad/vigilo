@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Simple.Validation;
 using vigilo.app.services.web.Models.api;
 using vigilo.domain.services.Commands;
 using vigilo.domain.services.Interfaces;
@@ -19,7 +20,8 @@ namespace vigilo.app.services.web.Controllers
             ICommand<GetRabbitMqServerUrlRequest,GetRabbitMqServerUrlResponse> rabbitServerUrlCommand,
             ICommand<GetMonitorableQueuesRequest,GetMonitorableQueuesReponse> getQueuesToMonitorCommand,
             ICommand<GetRabbitMqQueueMetadataRequest,GetRabbitMqQueueMetadataResponse> getQueueMetaDataCommand,
-            IMapper<RabbitMqQueueMetadata,MessageQueueStatus> messageQueueStatusMapper)
+            IMapper<RabbitMqQueueMetadata,MessageQueueStatus> messageQueueStatusMapper
+           )
         {
             _rabbitServerUrlCommand = rabbitServerUrlCommand;
             _getQueuesToMonitorCommand = getQueuesToMonitorCommand;
@@ -39,7 +41,7 @@ namespace vigilo.app.services.web.Controllers
                 QueueNames = queuesToMonitor.QueueNames
             };
             var metadata = _getQueueMetaDataCommand.Execute(metaDataRequest);
-
+            
             var models = metadata.Queues
                 .Select(_messageQueueStatusMapper.Map)
                 .ToList();

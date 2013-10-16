@@ -1,4 +1,6 @@
 ﻿using Ninject;
+using Simple.Validation;
+using Simple.Validation.Ninject;
 using vigilo.app.services.web.Mappers;
 using vigilo.app.services.web.Models.api;
 using vigilo.domain.services.Commands;
@@ -15,6 +17,9 @@ namespace vigilo.app.services.web.DependencyInjection
             kernel.Bind<ICommand<GetRabbitMqServerUrlRequest, GetRabbitMqServerUrlResponse>>().To<GetRabbitMqServerUrlCommand>();
             kernel.Bind<ICommand<GetMonitorableQueuesRequest, GetMonitorableQueuesReponse>>().To<GetMonitorableQueuesCommand>();
             kernel.Bind<ICommand<GetRabbitMqQueueMetadataRequest, GetRabbitMqQueueMetadataResponse>>().To<GetRabbitMqQueueMetadataCommand>();
+
+            var validatorProvider = new NinjectValidatorProvider(kernel);
+            Validator.SetValidatorProvider(validatorProvider);
         }
     }
 }
