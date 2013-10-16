@@ -10,15 +10,15 @@ namespace vigilo.domain.services.Commands
     {
         public GetMonitorableQueuesReponse Execute(GetMonitorableQueuesRequest request)
         {
-            var queuesToMonitorSetting = ConfigurationManager.AppSettings["queues_to_monitor"];
+            var appSettings = ConfigurationManager.AppSettings;
 
-            const char delimiter = '|';
-
-            var queues = queuesToMonitorSetting
-                .Split(delimiter)
+            var queuesToMonitorSettings = appSettings
+                .AllKeys
+                .Where(key => key.ToLower().StartsWith("queue_to_monitor"))
+                .Select(key => appSettings[key])
                 .ToList();
 
-            var response = new GetMonitorableQueuesReponse {QueueNames = queues};
+            var response = new GetMonitorableQueuesReponse { QueueNames = queuesToMonitorSettings };
 
             return response;
         }
