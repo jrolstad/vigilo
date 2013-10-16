@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using Simple.Validation;
 using vigilo.app.services.web.Models.api;
 using vigilo.domain.services.Commands;
 using vigilo.domain.services.Interfaces;
 
-namespace vigilo.app.services.web.Controllers
+namespace vigilo.app.services.web.Controllers.api
 {
     public class MessageQueueStatusController : ApiController
     {
