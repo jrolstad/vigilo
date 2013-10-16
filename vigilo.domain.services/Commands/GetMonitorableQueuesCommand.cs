@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using vigilo.domain.services.Interfaces;
 
 namespace vigilo.domain.services.Commands
 {
-    public class GetMonitorableQueuesCommand
+    public class GetMonitorableQueuesCommand : ICommand<GetMonitorableQueuesRequest,GetMonitorableQueuesReponse>
     {
         public GetMonitorableQueuesReponse Execute(GetMonitorableQueuesRequest request)
         {

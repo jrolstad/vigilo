@@ -1,8 +1,9 @@
 ﻿using System.Configuration;
+using vigilo.domain.services.Interfaces;
 
 namespace vigilo.domain.services.Commands
 {
-    public class GetRabbitMqServerUrlCommand
+    public class GetRabbitMqServerUrlCommand:ICommand<GetRabbitMqServerUrlRequest,GetRabbitMqServerUrlResponse>
     {
         public GetRabbitMqServerUrlResponse Execute(GetRabbitMqServerUrlRequest request)
         {

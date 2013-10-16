@@ -46,6 +46,8 @@
     <Compile Include="Commands\GetMonitorableQueuesCommand.cs" />
     <Compile Include="Commands\GetRabbitMqQueueMetadata.cs" />
     <Compile Include="Commands\GetRabbitMqServerUrlCommand.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\IMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

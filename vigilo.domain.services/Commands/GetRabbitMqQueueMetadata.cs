@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using RabbitMQ.Client;
+using vigilo.domain.services.Interfaces;
 
 namespace vigilo.domain.services.Commands
 {
-    public class GetRabbitMqQueueMetadataCommand
+    public class GetRabbitMqQueueMetadataCommand:ICommand<GetRabbitMqQueueMetadataRequest,GetRabbitMqQueueMetadataResponse>
     {
         private readonly ConnectionFactory _connectionFactory;
 
