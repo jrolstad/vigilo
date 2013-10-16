@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vigilo.domain.services", "vigilo.domain.services\vigilo.domain.services.csproj", "{08243004-F773-47AF-8ABC-CDDAE860F340}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vigilo.app.services.web", "vigilo.app.services.web\vigilo.app.services.web.csproj", "{AE4ADB16-E758-469A-A99D-79F35C6223D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{08243004-F773-47AF-8ABC-CDDAE860F340}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08243004-F773-47AF-8ABC-CDDAE860F340}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08243004-F773-47AF-8ABC-CDDAE860F340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE4ADB16-E758-469A-A99D-79F35C6223D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE4ADB16-E758-469A-A99D-79F35C6223D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE4ADB16-E758-469A-A99D-79F35C6223D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE4ADB16-E758-469A-A99D-79F35C6223D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
